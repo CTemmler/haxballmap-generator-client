@@ -1,7 +1,8 @@
 <script lang="ts">
     import {fly} from 'svelte/transition';
-    import type {InputField} from "./types/inputField";
-    import {quintOut} from "svelte/easing";
+    import {InputField} from "./types/inputField";
+    import {elasticInOut} from "svelte/easing";
+    export let inputFields = []
 
     let currentVisibleItems = 0;
 
@@ -10,14 +11,6 @@
     }, 1000)
 
     let stadiumName: string = 'Testname';
-    let inputFields: Array<InputField> = [
-        {label: "Stadien Name", type: "string", value: undefined, id: "stadiumName"},
-        {label: "Breite", type: "number", value: undefined, id: "width"},
-        {label: "Höhe", type: "number", value: undefined, id: "height"},
-        {label: "Spawn-Entfernung", type: "number", value: undefined, id: "spawnDistance"},
-        {label: "Hintergrund-Typ", type: "string", value: undefined, id: "backgroundType"},
-        {label: "KickOff-Radium", type: "number", value: undefined, id: "kickOffRadius"}
-    ]
 
     function handleChange(value: number | string, index: number) {
         inputFields[index].value = value;
@@ -38,9 +31,9 @@
 <form>
     {#each inputFields as {label, type, value, id}, index(id)}
         {#if index < currentVisibleItems}
-            <div transition:fly={{delay: 250, duration: 1000, x: 0, y: 500, opacity: 0.5, easing: quintOut}}>
+            <div transition:fly={{delay: 250, duration: 1000, x: 0, y: 500, opacity: 0.5, easing: elasticInOut}}>
                 <div><label for={id}>{label}:</label></div>
-                <input {id} name={id} {type} value={value} on:change={e => handleChange(e.target.value, index)}/>
+                <input {id} name={id} {type} placeholder={label} on:change={e => handleChange(e.target.value, index)}/>
             </div>
         {/if}
     {/each}

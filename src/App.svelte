@@ -1,10 +1,20 @@
 <script lang="ts">
   import Form from './lib/Form.svelte'
   import Field from "./lib/Field.svelte";
+  import type {InputField} from "./lib/types/inputField";
+
+  let inputFields: Array<InputField> = [
+    {label: "Stadien Name", type: "string", value: undefined, id: "stadiumName"},
+    {label: "Breite", type: "number", value: undefined, id: "width"},
+    {label: "Höhe", type: "number", value: undefined, id: "height"},
+    {label: "Spawn-Entfernung", type: "number", value: undefined, id: "spawnDistance"},
+    {label: "Hintergrund-Typ", type: "string", value: undefined, id: "backgroundType"},
+    {label: "KickOff-Radium", type: "number", value: undefined, id: "kickOffRadius"}
+  ]
 </script>
 
 <main>
-  <div class="form-space"><Form /></div>
+  <div class="form-space" ><Form inputFields={inputFields}/></div>
   <div class="field-space"><Field /></div>
 </main>
 
@@ -14,11 +24,16 @@
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
   main {
     text-align: center;
-    padding: 1em;
-    margin: 0 auto;
+    margin: 0 0;
     display: flex;
+    height: 100%;
   }
 
   .form-space {
@@ -29,36 +44,6 @@
   .field-space {
     width: 80%;
     background-color: lightgray;
-  }
-
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
+    height: 100%;
   }
 </style>
