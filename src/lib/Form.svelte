@@ -18,7 +18,7 @@
         console.log('value', value)
         console.log('inputFields', inputFields)
 
-        if (index + 1 === currentVisibleItems) {
+        if (index + 1 === currentVisibleItems && currentVisibleItems !== inputFields.length) {
             currentVisibleItems += 1;
         }
     }
