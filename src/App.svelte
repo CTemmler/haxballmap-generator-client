@@ -1,9 +1,11 @@
 <script lang="ts">
   import Form from './lib/Form.svelte'
+  import Field from "./lib/Field.svelte";
 </script>
 
 <main>
-  <Form />
+  <div class="form-space"><Form /></div>
+  <div class="field-space"><Field /></div>
 </main>
 
 <style>
@@ -16,6 +18,17 @@
     text-align: center;
     padding: 1em;
     margin: 0 auto;
+    display: flex;
+  }
+
+  .form-space {
+    width: 20%;
+    background-color: lightseagreen;
+  }
+
+  .field-space {
+    width: 80%;
+    background-color: lightgray;
   }
 
   img {
