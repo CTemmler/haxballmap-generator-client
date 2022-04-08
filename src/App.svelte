@@ -14,8 +14,8 @@
 </script>
 
 <main>
-  <div class="form-space" ><Form inputFields={inputFields}/></div>
-  <div class="field-space"><Field /></div>
+  <div class="form-space" ><Form bind:inputFields={inputFields}/></div>
+  <div class="field-space"><Field inputFields={inputFields}/></div>
 </main>
 
 <style>

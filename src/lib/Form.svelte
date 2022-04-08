@@ -1,8 +1,9 @@
 <script lang="ts">
     import {fly} from 'svelte/transition';
-    import {InputField} from "./types/inputField";
+    import type {InputField} from "./types/inputField";
     import {elasticInOut} from "svelte/easing";
-    export let inputFields = []
+
+    export let inputFields: Array<InputField> = []
 
     let currentVisibleItems = 0;
 
