@@ -25,7 +25,7 @@
         console.log('value', value)
         console.log('inputFields', inputFields)
 
-        if (index + 1 === currentVisibleItems && currentVisibleItems !== inputFields.length) {
+        if (index + 1 === currentVisibleItems && currentVisibleItems !== inputFields.length + 1 ) {
             currentVisibleItems += 1;
         }
     }
@@ -54,7 +54,7 @@
             </div>
         {/if}
     {/each}
-    {#if currentVisibleItems === inputFields.length}
+    {#if currentVisibleItems === inputFields.length + 1 }
         <input class="form-sent-button" type="button" value="Absenden" on:click={submit3}/>
     {/if}
 </form>
