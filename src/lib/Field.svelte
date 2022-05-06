@@ -1,17 +1,32 @@
 <script>
-    import { Canvas, Layer, t } from "svelte-canvas";
+    import {Canvas, Layer, t} from "svelte-canvas";
 
     export let inputFields = []
 
-    $: render = ({ context, width, height }) => {
+    $: fieldWidth = Number(inputFields.find(value => value.id === "width").value);
+    $: fieldHeight = Number(inputFields.find(value => value.id === "height").value);
+    const lineThickness = 5;
+    const offsetX = 50;
+    const offsetY = 10;
+
+    $: render = ({context}) => {
         context.fillStyle = `hsl(${$t / 40}, 100%, 50%)`;
         context.beginPath();
-        context.arc(($t / 4) % width, ($t / 4) % height, 100, 0, Math.PI * 2);
+        context.rect(offsetX, offsetY, fieldWidth, lineThickness);
+        context.rect(offsetX, offsetY, lineThickness, fieldHeight);
+        context.rect((fieldWidth / 2) + offsetX, offsetY, 1, fieldHeight + lineThickness);
+        context.rect(fieldWidth + offsetX, offsetY, lineThickness, fieldHeight + lineThickness);
+        context.rect(offsetX, fieldHeight + offsetY, fieldWidth, lineThickness);
         context.fill();
     };
-</script>
 
-<h1>Field</h1>
-<Canvas width={640} height={640}>
-    <Layer {render} />
-</Canvas>
+    let width;
+    let height;
+    let headlineHeight;
+</script>
+<div bind:clientWidth={width} bind:clientHeight={height} style="height: 100%">
+    <h1 bind:clientHeight={headlineHeight}>Field</h1>
+    <Canvas {width} heigth={height - headlineHeight}>
+        <Layer {render}/>
+    </Canvas>
+</div>

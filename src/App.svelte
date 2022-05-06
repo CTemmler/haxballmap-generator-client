@@ -15,7 +15,7 @@
 
 <main>
   <div class="form-space" ><Form bind:inputFields={inputFields}/></div>
-  <div class="field-space"><Field inputFields={inputFields}/></div>
+  <div class="field-space" style="height: 100%"><Field inputFields={inputFields}/></div>
 </main>
 
 <style>
