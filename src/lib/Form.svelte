@@ -7,11 +7,18 @@
 
     let currentVisibleItems = 0;
 
+    let backgroundOptions: { value: string, label: string, selected: boolean } [] = [{
+        value: "default",
+        label: "Bitte auswählen:",
+        selected: true
+    },
+        {value: "grass", label: "Grass", selected: false},
+        {value: "hockey", label: "Hockey", selected: false},
+        {value: "none", label: "Nix", selected: false}];
+
     setTimeout(() => {
         currentVisibleItems += 1;
     }, 1000)
-
-    let stadiumName: string = 'Testname';
 
     function handleChange(value: number | string, index: number) {
         inputFields[index].value = value;
@@ -34,7 +41,16 @@
         {#if index < currentVisibleItems}
             <div transition:fly={{delay: 250, duration: 1000, x: 0, y: 500, opacity: 0.5, easing: elasticInOut}}>
                 <div><label for={id}>{label}:</label></div>
-                <input {id} name={id} {type} placeholder={label} on:change={e => handleChange(e.target.value, index)}/>
+                {#if type === "select"}
+                    <select {id} name={id} on:change={e => handleChange(e.target.value, index)}>
+                        {#each backgroundOptions as {value, label, selected}}
+                            <option {value} {selected}>{label}</option>
+                        {/each}
+                    </select>
+                {:else}
+                    <input {id} name={id} {type} placeholder={label}
+                           on:change={e => handleChange(e.target.value, index)}/>
+                {/if}
             </div>
         {/if}
     {/each}
@@ -63,5 +79,9 @@
 
     .form-sent-button {
         width: 100px;
+    }
+
+    #backgroundType:focus option:first-of-type {
+        display: none;
     }
 </style>

@@ -8,7 +8,7 @@
     {label: "Breite", type: "number", value: undefined, id: "width"},
     {label: "Höhe", type: "number", value: undefined, id: "height"},
     {label: "Spawn-Entfernung", type: "number", value: undefined, id: "spawnDistance"},
-    {label: "Hintergrund-Typ", type: "string", value: undefined, id: "backgroundType"},
+    {label: "Hintergrund-Typ", type: "select", value: undefined, id: "backgroundType"},
     {label: "KickOff-Radium", type: "number", value: undefined, id: "kickOffRadius"}
   ]
 </script>
