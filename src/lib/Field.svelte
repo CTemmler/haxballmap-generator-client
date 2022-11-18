@@ -75,7 +75,7 @@
 </script>
 <div bind:clientWidth={width} bind:clientHeight={height} style="height: 100%">
     <h1 bind:clientHeight={headlineHeight}>Field</h1>
-    <Canvas {width} heigth={height - headlineHeight}>
+    <Canvas {width} height={height - headlineHeight}>
         <Layer {render}/>
     </Canvas>
 </div>
