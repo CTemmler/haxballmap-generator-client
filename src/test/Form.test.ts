@@ -17,8 +17,11 @@ describe('Form', ()=> {
             value: undefined
         }];
         render(Form, {inputFields});
-        const inputField2BeforeValueInField1 = screen.getByTestId(inputFields[2].id);
-        ex
+        // const heading = screen.getByText('Hello World!');
+        // console.log('heading', heading);
+        // const inputField1BeforeValueInField1 = screen.getByText(inputFields[0].label);
+        // const inputField2BeforeValueInField1 = screen.getByTestId(inputFields[2].id);
+
         inputFields[1].value = 'value';
 
     })
