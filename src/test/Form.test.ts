@@ -9,7 +9,7 @@ describe('Form', () => {
        vi.useFakeTimers();
     })
 
-    test('second field should be displayed', async () => {
+    test('second field should be displayed', () => {
         const inputFields: Array<InputField> = [{
             label: 'Field 1',
             id: 'field1',
@@ -21,7 +21,7 @@ describe('Form', () => {
             type: 'string',
             value: undefined
         }];
-        render(Form, {inputFields});
+        render(Form, {props:{inputFields}});
         const field1 = screen.getByTestId('testing-id');
         console.log('field1', field1.innerHTML);
         // const inputField1BeforeValueInField1 = screen.getByText(inputFields[0].label);
