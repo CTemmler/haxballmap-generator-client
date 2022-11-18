@@ -35,10 +35,12 @@
     }
 </script>
 
-<form>
+<form data-testid="testing-id">
+    <div>testing-id-div</div>
     {#each inputFields as {label, type, value, id}, index(id)}
         {#if index < currentVisibleItems}
-            <div transition:fly={{delay: 0, duration: 1000, x: 0, y: 500, opacity: 0.5, easing: elasticInOut}}>
+<!--            <div transition:fly={{delay: 0, duration: 1000, x: 0, y: 500, opacity: 0.5, easing: elasticInOut}}>-->
+            <div>
                 <div><label for={id}>{label}:</label></div>
                 {#if type === "select"}
                     <select {id} name={id} data-testid={id} on:change={e => handleChange(e.target.value, index)}>
