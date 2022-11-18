@@ -42,7 +42,7 @@
             <div transition:fly={{delay: 250, duration: 1000, x: 0, y: 500, opacity: 0.5, easing: elasticInOut}}>
                 <div><label for={id}>{label}:</label></div>
                 {#if type === "select"}
-                    <select {id} name={id} on:change={e => handleChange(e.target.value, index)}>
+                    <select {id} name={id} data-testid={id} on:change={e => handleChange(e.target.value, index)}>
                         {#each backgroundOptions as {value, label, selected}}
                             <option {value} {selected}>{label}</option>
                         {/each}
