@@ -33,7 +33,6 @@
     function submit3() {
         console.log('Final Fields: ', inputFields);
     }
-
 </script>
 
 <form>
